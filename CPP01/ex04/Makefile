@@ -1,7 +1,7 @@
-NAME = Weapon
+NAME = replace
 CC = c++
 FLAGS = -Wall -Wextra -Werror -std=c++98
-SRCS = Weapon.cpp HumanA.cpp main.cpp HumanB.cpp
+SRCS = main.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 all: $(NAME)
