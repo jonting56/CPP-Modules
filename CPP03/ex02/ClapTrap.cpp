@@ -1,5 +1,14 @@
 #include "ClapTrap.hpp"
 
+ClapTrap::ClapTrap(void)
+{
+	this->_name = "CrapTrap";
+	cout << "ClapTrap: " << this->_name << " has been born" << endl;
+	this->_hitpoints = 10;
+	this->_energy = 10;
+	this->_attackpoints = 0;
+}
+
 ClapTrap::ClapTrap(string name): _name(name)
 {
 	cout << "ClapTrap: " << name << " has been born" << endl;
@@ -10,7 +19,7 @@ ClapTrap::ClapTrap(string name): _name(name)
 
 ClapTrap::~ClapTrap(void)
 {
-	cout << this->_name << " has died" << endl;
+	cout << "ClapTrap: I've been clapped " << this->getName() << endl;
 }
 
 ClapTrap::ClapTrap(const ClapTrap &src)
@@ -21,6 +30,7 @@ ClapTrap::ClapTrap(const ClapTrap &src)
 	this->_attackpoints = src.getDamage();
 	cout << "Copy of ClapTrap created" << endl;
 }
+
 //Setter
 
 void	ClapTrap::setName(string name)
@@ -75,7 +85,10 @@ void	ClapTrap::beRepaired(unsigned int amount)
 
 void	ClapTrap::takeDamage(unsigned int amount)
 {
-	_hitpoints -= amount;
+	if (amount > _hitpoints)
+		_hitpoints = 0;
+	else	
+		_hitpoints -= amount;
 	cout << "ClapTrap " << this->getName() << " takes " << amount << " damage, " << this->getHitPoints() << " HP left" << endl;
 }
 

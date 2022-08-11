@@ -17,6 +17,7 @@ class ClapTrap
 		unsigned int		_attackpoints;
 
 	public:
+		ClapTrap(void);
 		ClapTrap(string name);
 		~ClapTrap(void);
 
