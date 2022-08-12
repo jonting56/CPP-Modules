@@ -2,10 +2,11 @@
 
 ClapTrap::ClapTrap(void)
 {
-	cout << "Claptrap, CrapTrap has been born" << endl;
+	cout << "Parent claptrap has been born" << endl;
 	this->_hitpoints = 10;
 	this->_energy = 10;
 	this->_attackpoints = 0;
+	this->_name = "parent claptrap";
 }
 
 ClapTrap::ClapTrap(string name): _name(name)
@@ -18,7 +19,7 @@ ClapTrap::ClapTrap(string name): _name(name)
 
 ClapTrap::~ClapTrap(void)
 {
-	cout << "ClapTrap: I've been clapped " << this->_name << endl;
+	cout << "Claptrap, I've been clapped " << this->getName() << endl;
 }
 
 ClapTrap::ClapTrap(const ClapTrap &src)
@@ -61,7 +62,7 @@ unsigned int	ClapTrap::getEnergy(void) const
 void	ClapTrap::attack(const string& target)
 {
 	if (this->_energy < 1 || this->_hitpoints < 1)
-		cout << "Not enough energy or hitpoints are zero" << endl;
+		cout << this->_name << " does not enough energy or hitpoints are zero" << endl;
 	else 
 	{
 		_energy--;
@@ -72,7 +73,7 @@ void	ClapTrap::attack(const string& target)
 void	ClapTrap::beRepaired(unsigned int amount)
 {
 	if (this->_energy < 1 || this->_hitpoints < 1)
-		cout << "Not enough energy or hitpoints are zero" << endl;
+		cout << this->_name << "does not enough energy or hitpoints are zero" << endl;
 	else
 	{
 		_hitpoints += amount;

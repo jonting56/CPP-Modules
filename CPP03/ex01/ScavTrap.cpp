@@ -17,11 +17,11 @@ ScavTrap::~ScavTrap(void)
 void ScavTrap::guardGate(void)
 {
 	if (this->_energy < 1)
-		cout << "No energy to do guard gate" << endl;
+		cout << this->_name << " has no energy to do guard gate" << endl;
 	else	
 	{
 		_energy--;
-		cout << "ScavTrap " << this->getName() << " has entered guard keeper mode, cannot be damaged!" << endl;
+		cout << "ScavTrap " << this->_name << " has entered guard keeper mode, cannot be damaged!" << endl;
 	}
 }
 
@@ -30,7 +30,7 @@ void	ScavTrap::attack(string const &target)
 	if (this->_energy < 1 || this->_hitpoints < 1)
 		cout << "Out of energy or dead" << endl;
 	else
-		cout << "ScavTrap, " << this->getName() << " attacks " << target << " takes " << this->getDamage() << " damage" << endl;
+		cout << "ScavTrap, " << this->_name << " attacks " << target << " takes " << this->_attackpoints << " damage" << endl;
 }
 
 ScavTrap::ScavTrap(ScavTrap const &src)
