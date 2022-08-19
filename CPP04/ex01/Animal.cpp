@@ -9,6 +9,7 @@ Animal::Animal(void)
 Animal::~Animal(void)
 {
 	cout << "Animal has deded" << endl;
+    std::cout << "--------------" << std::endl;
 }
 
 string Animal::getType(void) const
@@ -37,12 +38,14 @@ Animal::Animal(Animal &src)
 Dog::Dog(void)
 {
 	cout << "Doggo made" << endl;
+    this->brain = new Brain;
 	this->type = "Dog";
 }
 
 Dog::~Dog(void)
 {
 	cout << "Doggo deddo" << endl;
+    delete this->brain;
 }
 
 void    Dog::makeSound(void) const 
@@ -53,13 +56,18 @@ void    Dog::makeSound(void) const
 Dog &Dog::operator=(Dog &src)
 {
     this->type = src.type;
+    if (this->brain)
+        delete this->brain;
+    this->brain = new Brain(*(src.getBrain()));
     return (*this);
 }
 
 Dog::Dog(Dog &src)
 {
-    this->type = src.type;
+    this->type = src.getType();
+    this->brain = new Brain(*(src.getBrain()));
     cout << "Copy of dog was made" << endl;
+    std::cout << "--------------" << std::endl;
 }
 
 string Dog::getType(void) const
@@ -67,16 +75,23 @@ string Dog::getType(void) const
     return(this->type);
 }
 
+Brain *Dog::getBrain(void)
+{
+    return (this->brain);
+}
+
 //Cat
 Cat::Cat(void)
 {
 	cout << "Catto made" << endl;
+    this->brain = new Brain;
 	this->type = "Cat";
 }
 
 Cat::~Cat(void)
 {
 	cout << "Catto deddo" << endl;
+    delete this->brain;
 }
 
 string Cat::getType(void) const
@@ -92,13 +107,23 @@ void Cat::makeSound(void) const
 Cat &Cat::operator=(Cat &src)
 {
     this->type = src.type;
+    if (this->brain)
+        delete this->brain;
+    this->brain = new Brain(*(src.getBrain()));
     return (*this);
 }
 
 Cat::Cat(Cat &src)
 {
     this->type = src.getType();
+    this->brain = new Brain(*(src.getBrain()));
     cout << "Cat copy made" << endl;
+    std::cout << "--------------" << std::endl;
+}
+
+Brain *Cat::getBrain(void)
+{
+    return (this->brain);
 }
 
 //WrongAnimal

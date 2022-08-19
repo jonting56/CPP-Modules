@@ -3,15 +3,12 @@
 
 #include <iostream>
 #include <string>
+#include "Brain.hpp"
 
 using std::cout;
 using std::endl;
 using std::string;
 
-
-// Base classes that have functions which will be overridden need to be stated as virtual
-// so that they will use the child class over the parent class
-// This is the case in the animal class and wronganimal class
 class Animal
 {
 	protected:
@@ -30,6 +27,7 @@ class Dog: public Animal
 {
 	private:
 		string type;
+        Brain *brain;
 	public:
         Dog(void);
         ~Dog(void);
@@ -37,6 +35,7 @@ class Dog: public Animal
 
         Dog &operator=(Dog &src);
         Dog(Dog &src);
+        Brain *getBrain(void);
         string getType(void) const;
 };
 
@@ -44,12 +43,14 @@ class Cat: public Animal
 {
 	private:
 		string type;
+        Brain *brain;
 	public:
         Cat(void);
         ~Cat(void);
 
         Cat &operator=(Cat &src);
         Cat(Cat &src);
+        Brain *getBrain(void);
         void makeSound(void) const;
         string getType(void) const;
 };

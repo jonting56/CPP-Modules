@@ -1,35 +1,36 @@
-#ifndef ANIMAL_HPP
-#define ANIMAL_HPP
+#ifndef AANIMAL_HPP
+#define AANIMAL_HPP
 
 #include <iostream>
 #include <string>
+#include "Brain.hpp"
 
 using std::cout;
 using std::endl;
 using std::string;
 
-
-// Base classes that have functions which will be overridden need to be stated as virtual
-// so that they will use the child class over the parent class
-// This is the case in the animal class and wronganimal class
-class Animal
+//Abstract classes must have at least one pure virtual method
+//in this case it is makeSound since there is not 'animal sound'
+//this method is later defined by the classes which inherit from it
+class AAnimal
 {
 	protected:
 		string type;
 	public:
-		Animal(void);
-		virtual ~Animal(void);
+		AAnimal(void);
+		virtual ~AAnimal(void) = 0;
 
-		Animal &operator=(Animal &src);
-		Animal(Animal &src);
+		AAnimal &operator=(AAnimal &src);
+		AAnimal(AAnimal &src);
 		virtual string getType(void) const;
-		virtual void makeSound(void) const;
+		virtual void makeSound(void) const = 0;
 };
 
-class Dog: public Animal
+class Dog: public AAnimal
 {
 	private:
 		string type;
+        Brain *brain;
 	public:
         Dog(void);
         ~Dog(void);
@@ -37,19 +38,22 @@ class Dog: public Animal
 
         Dog &operator=(Dog &src);
         Dog(Dog &src);
+        Brain *getBrain(void);
         string getType(void) const;
 };
 
-class Cat: public Animal
+class Cat: public AAnimal
 {
 	private:
 		string type;
+        Brain *brain;
 	public:
         Cat(void);
         ~Cat(void);
 
         Cat &operator=(Cat &src);
         Cat(Cat &src);
+        Brain *getBrain(void);
         void makeSound(void) const;
         string getType(void) const;
 };
