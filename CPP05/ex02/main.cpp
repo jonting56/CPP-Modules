@@ -21,10 +21,10 @@ int	main(void)
 	cout << "Form a successfully signed by Bob" << endl;
 	bob.signForm(a);
 	cout << "Form a has been signed " << a.getSign() << endl;
-	a.execute(bob); 
-
+	bob.executeForm(a);
 	/*cout << "Form a unsuccessfully signed by Bill" << endl;
 	bill.signForm(b);
 	cout << "Form a has not been signed " << b.getSign() << endl;
 	*/
+
 }

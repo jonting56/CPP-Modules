@@ -92,7 +92,10 @@ void Form::beSigned(Bureaucrat &src)
 {
 	int grade = src.getGrade();
 	if (this->_sign == 1)
+	{
+		cout << "Form already signed" << endl;
 		return ;
+	}
 	if (this->_signGrade < grade)
 	{
 		throw(Form::GradeTooLowException());

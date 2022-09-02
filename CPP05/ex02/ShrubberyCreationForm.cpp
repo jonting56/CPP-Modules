@@ -1,6 +1,10 @@
 #include "ShrubberyCreationForm.hpp"
 
-ShrubberyCreationForm::ShrubberyCreationForm(string target): Form::Form("Shrub form", 137, 145)
+ShrubberyCreationForm::ShrubberyCreationForm(void): _name("Shrub"), _execGrade(137), _signGrade(145)
+{
+}
+
+ShrubberyCreationForm::ShrubberyCreationForm(string target): _name("Shrub"), _execGrade(137), _signGrade(145)
 {
 	this->_target = target;
 	cout << "Shrubbery form has been made" << endl; 
@@ -11,7 +15,7 @@ ShrubberyCreationForm::~ShrubberyCreationForm(void)
 	cout << "Shrubbery form named destroyed" << endl;
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm &src): Form::Form("Shrub form", 137, 145)
+ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm &src): _name("Shrub"), _execGrade(137), _signGrade(145)
 {
 	this->_target = src.getTarget();
 	cout << "Copy of shrubbery form created" << endl;
@@ -56,8 +60,11 @@ void ShrubberyCreationForm::execute(Bureaucrat const &executor) const
 		throw (Form::GradeTooLowException());
 		return ;
 	}
-	std::ofstream shrub(this->_target + "_shrubbery");
-	shrub << "tree";
-	shrub.close();
+	else
+	{
+		std::ofstream shrub(this->_target + "_shrubbery");
+		shrub << "tree";
+		shrub.close();
+	}
 }
 

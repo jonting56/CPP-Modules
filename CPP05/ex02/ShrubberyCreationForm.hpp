@@ -12,7 +12,13 @@ class ShrubberyCreationForm: public Form
 {
 	private:
 		string _target;
-	
+		const string _name;
+		bool _sign;
+		const int _execGrade;
+		const int _signGrade;
+
+		ShrubberyCreationForm(void);
+		
 	public:
 		ShrubberyCreationForm(string name);
 		virtual ~ShrubberyCreationForm(void);
