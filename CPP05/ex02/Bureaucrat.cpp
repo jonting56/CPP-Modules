@@ -1,4 +1,6 @@
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
+
 //Constructors
 
 Bureaucrat::Bureaucrat(void): _name("Bureaucrat"), _grade(150)
@@ -13,7 +15,7 @@ Bureaucrat::Bureaucrat(string name, int grade): _name(name)
 	if (grade > 150)
 		throw (Bureaucrat::GradeTooLowException());
 	this->_grade = grade;
-	cout << "Bureaucrat made " << name << endl;
+	cout << "Bureaucrat made named " << name << endl;
 }
 
 Bureaucrat::Bureaucrat(Bureaucrat const &src): _name(src.getName() + "_copy")
@@ -55,6 +57,33 @@ void Bureaucrat::decrement(void)
 	}
 	this->_grade++;
 	cout << "Grade successfully decremented, grade is now " << this->_grade << endl;
+}
+
+void Bureaucrat::signForm(Form &src)
+{
+	try
+	{
+		src.beSigned(*this);
+		cout << this->_name << " has successfully signed the form called " << src.getName() << endl;
+	}
+	catch (Form::Exception &e)
+	{
+		std:: cout << "Bureaucrat " << this->_name << " with a grade " << this->_grade << " cannot sign " << src << " beacause " << e.what() << endl;
+	}
+}
+
+void Bureaucrat::executeForm(Form const &form)
+{
+	try
+	{
+		form.execute(*this);
+		cout << this->_name << " successfully executed " << form.getName() << endl;
+	}
+	catch(Form::Exception& e)
+	{
+		cout << e.what() << endl;
+	}
+	
 }
 
 //Getters

@@ -3,10 +3,13 @@
 
 #include <iostream>
 #include <exception>
+#include "Form.hpp"
 
 using std::cout;
 using std::endl;
 using std::string;
+
+class Form;
 
 class Bureaucrat
 {
@@ -24,6 +27,8 @@ class Bureaucrat
 		//Methods
 		void increment(void);
 		void decrement(void);
+		void signForm(Form &src);
+		void executeForm(Form const &form);
 		
 		//Getters
 		const string getName(void) const;
