@@ -27,7 +27,7 @@ Form::~Form(void)
 }
 
 //Copy Constructor
-Form::Form(Form &src): _name(src.getName() + "_copy"), _sign(src.getSign()), _execGrade(src.getGrade()), _signGrade(src.getsignGrade())
+Form::Form(Form &src): _name(src.getName() + "_copy"), _sign(src.getSign()), _execGrade(src.getExecGrade()), _signGrade(src.getSignGrade())
 {
 	cout << "Copy of the form " << this->_name << " made" << endl;
 }
@@ -45,12 +45,12 @@ string Form::getName(void) const
 	return (this->_name);
 }
 
-int Form::getGrade(void) const
+int Form::getExecGrade(void) const
 {
 	return (this->_execGrade);
 }
 
-int Form::getsignGrade(void) const
+int Form::getSignGrade(void) const
 {
 	return (this->_signGrade);
 }
@@ -98,6 +98,6 @@ void Form::beSigned(Bureaucrat &src)
 //Function
 std::ostream &operator<<(std::ostream &print, Form &src)
 {
-	print << "the form named " << src.getName() << " with a grade to sign of " << src.getGrade();
+	print << "the form named " << src.getName() << " with a grade to sign of " << src.getSignGrade() << " and a execution grade of " << src.getExecGrade();
 	return (print);
 }

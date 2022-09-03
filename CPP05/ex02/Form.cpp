@@ -1,7 +1,7 @@
 #include "Form.hpp"
 #include "Bureaucrat.hpp"
 
-Form::Form(void): _name("Form"), _sign(false), _execGrade(150), _signGrade(150) 
+Form::Form(void): _name("Default_Form"), _sign(false), _execGrade(150), _signGrade(150) 
 {	
 	cout << "Default form made" << endl;
 }
@@ -17,7 +17,7 @@ Form::Form(const string name, const int execGrade, const int signGrade): _name(n
 		throw (Form::GradeTooLowException());
 	}
 	this->_sign = false;
-	cout << "Form called " << this->_name << " successfully made, required grade to sign is " << this->_signGrade << " or higher" << endl;
+	cout << "Form called " << this->_name << " successfully made" << endl;
 }
 
 //Destructor

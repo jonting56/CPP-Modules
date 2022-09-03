@@ -14,8 +14,8 @@ int	main(void)
 	//Bureaucrat & bob_ref = bob;
 	//Bureaucrat & bill_ref = bill;
 
-	Form		a("A13", 4, 6);
-	Form		b("B97", 146, 135);
+	Form		a("A", 4, 6);
+	Form		b("B", 146, 135);
 
 	cout << "Attempting to make a form with a required grade >150" << endl;
 	try
@@ -37,11 +37,11 @@ int	main(void)
 		cout << "Unable to construct " << e.what() << '\n';
 	}
 	
-	cout << "Form a successfully signed by Bob" << endl;
+	cout << "Form [A] successfully signed by Bob" << endl;
 	bob.signForm(a);
-	cout << "Form a has been signed " << a.getSign() << endl; 
+	cout << "Form [A] has been signed " << a.getSign() << endl; 
 
-	cout << "Form a unsuccessfully signed by Bill" << endl;
+	cout << "Form [B] unsuccessfully signed by Bill" << endl;
 	bill.signForm(b);
-	cout << "Form a has not been signed " << b.getSign() << endl;
+	cout << "Form [B] has not been signed " << b.getSign() << endl;
 }

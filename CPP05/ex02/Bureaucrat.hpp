@@ -27,7 +27,7 @@ class Bureaucrat
 		//Methods
 		void increment(void);
 		void decrement(void);
-		void signForm(Form &src);
+		virtual void signForm(Form &src);
 		void executeForm(Form const &form);
 		
 		//Getters

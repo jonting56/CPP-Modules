@@ -2,6 +2,8 @@
 #include "Form.hpp"
 #include "Bureaucrat.hpp"
 #include "ShrubberyCreationForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "PresidentialPardonForm.hpp"
 
 int	main(void)
 {
@@ -12,19 +14,22 @@ int	main(void)
 	Bureaucrat	bob("Bob", 1);
 	Bureaucrat	bill("Bill", 150);
 
-	//Bureaucrat & bob_ref = bob;
-	//Bureaucrat & bill_ref = bill;
-
 	ShrubberyCreationForm		a("home");
-	//Form		b("B97", 146, 135);
+	RobotomyRequestForm			b("B97");
+	PresidentialPardonForm		c("mafia boss");
 	
 	cout << "Form a successfully signed by Bob" << endl;
 	bob.signForm(a);
-	cout << "Form a has been signed " << a.getSign() << endl;
+	cout << "If form has been signed number will be one, " << a.getSign() << endl;
 	bob.executeForm(a);
-	/*cout << "Form a unsuccessfully signed by Bill" << endl;
+	cout << "Form a unsuccessfully signed by Bill" << endl;
 	bill.signForm(b);
 	cout << "Form a has not been signed " << b.getSign() << endl;
-	*/
+	bob.signForm(b);
 
+	cout << "Will attempt to robotomise 5 times 50% chance to pass" << endl;
+	for (int i=0;i<5;i++)
+		bob.executeForm(b);
+	bob.signForm(c);
+	bob.executeForm(c);
 }

@@ -32,8 +32,8 @@ class Form
 
 		//Getters
 		string getName(void) const;
-		int getGrade(void) const;
-		int getsignGrade(void) const;
+		int getExecGrade(void) const;
+		int getSignGrade(void) const;
 		int getSign(void) const;
 
 		//Methods

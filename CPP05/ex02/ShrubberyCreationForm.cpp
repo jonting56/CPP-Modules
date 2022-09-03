@@ -1,13 +1,15 @@
 #include "ShrubberyCreationForm.hpp"
 
-ShrubberyCreationForm::ShrubberyCreationForm(void): _name("Shrub"), _execGrade(137), _signGrade(145)
+ShrubberyCreationForm::ShrubberyCreationForm(void): Form("Shrub form", 137, 145) //_name("Shrub_Form"), _execGrade(137), _signGrade(145)
 {
+	this->_target = "Default";
+	cout << "Default shrub form created" << endl;
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(string target): _name("Shrub"), _execGrade(137), _signGrade(145)
+ShrubberyCreationForm::ShrubberyCreationForm(string target): Form("Shrub form", 137, 145)
 {
 	this->_target = target;
-	cout << "Shrubbery form has been made" << endl; 
+	cout << "Shrubbery form has been made with a execution grade of 137 and signed grade of 145" << endl; 
 }
 
 ShrubberyCreationForm::~ShrubberyCreationForm(void)
@@ -15,7 +17,7 @@ ShrubberyCreationForm::~ShrubberyCreationForm(void)
 	cout << "Shrubbery form named destroyed" << endl;
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm &src): _name("Shrub"), _execGrade(137), _signGrade(145)
+ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm &src): Form("Shrub form", 137, 145)
 {
 	this->_target = src.getTarget();
 	cout << "Copy of shrubbery form created" << endl;
@@ -38,7 +40,7 @@ void ShrubberyCreationForm::beSigned(const Bureaucrat &src)
 	}
 	if (this->getSign() < src.getGrade())
 	{
-		cout << src.getName() << "'s grade is too low to sign this form the grade must be " << this->_signGrade << " or higher" << endl;
+		cout << src.getName() << "'s grade is too low to sign this form the grade must be " << this->getSignGrade() << " or higher" << endl;
 		throw (Form::GradeTooLowException());  
 	}
 	else if (this->getSign() >= src.getGrade())
@@ -55,7 +57,7 @@ void ShrubberyCreationForm::execute(Bureaucrat const &executor) const
 		throw (Form::NotSigned());
 		return ;
 	}
-	if (this->getExecGrade() > executor.getGrade())
+	if (this->getExecGrade() < executor.getGrade())
 	{
 		throw (Form::GradeTooLowException());
 		return ;
