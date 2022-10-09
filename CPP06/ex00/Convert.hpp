@@ -21,8 +21,15 @@ class Convert
 		Convert(Convert &src);
 		Convert &operator=(Convert &src);
 
+		const string &getString(void) const;
+
 		//Methods
+		operator char();
+		operator float();
+		operator double();
+
 
 };
 
+int printable_char (char c);
 #endif
