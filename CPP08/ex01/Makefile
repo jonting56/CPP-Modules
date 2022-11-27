@@ -1,7 +1,7 @@
-NAME = convert
+NAME = span
 CC = c++
 FLAGS = -Wall -Wextra -Werror -std=c++98
-SRCS = Convert.cpp main.cpp
+SRCS = Span.cpp main.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 all: $(NAME)

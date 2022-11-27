@@ -1,10 +1,31 @@
 #include "easyfind.hpp"
+#include <vector>
+#include <list>
 
 int main()
 {
-	int arr[4] = {1,2,3,4};
-	char str[6] = "hello";
+    std::vector<int> vec;
+    for (int i = 0; i < 6; i++) {
+        vec.push_back(i);
+    }
 
-	easyfind(arr, 2);
-	easyfind(str, 2);
+    std::list<int> lst;
+    for (int i = 0; i < 6; i++) {
+        lst.push_back(i);
+    }
+    std::cout << "Created vector and list of ints 0 to 6" << std::endl;
+    std::cout << "--------------------------" << std::endl;
+    std::cout << "Testing vector of ints, looking for 2" << std::endl;
+    try {
+        easyfind(vec, 2);
+    } catch (const std::string& except) {
+        std::cout << except << std::endl;
+    }
+    std::cout << "Testing list of ints, looking for 10" << std::endl;
+    try {
+        easyfind(lst, 10);
+    } catch (const std::string& except) {
+        std::cout << except << std::endl;
+        
+    }
 }
